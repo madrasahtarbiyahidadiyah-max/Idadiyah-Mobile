@@ -25,11 +25,14 @@ jobs:
       uses: gradle/actions/setup-gradle@v3
 
     - name: 🛠️ Perbaiki Gradle Wrapper Otomatis
-      # Trik Ampuh: Ini akan menimpa/membuat ulang file .jar yang rusak dengan yang baru & sehat langsung di server!
       run: gradle wrapper
 
     - name: 🔑 Berikan izin eksekusi
       run: chmod +x gradlew
+
+    - name: 🔐 Buat Keystore Debug
+      # Langkah baru: Membuat sertifikat digital sementara agar Android bisa mem-build APK
+      run: keytool -genkey -v -keystore debug.keystore -storepass android -alias androiddebugkey -keypass android -keyalg RSA -keysize 2048 -validity 10000 -dname "C=US, O=Android, CN=Android Debug"
 
     - name: 🚀 Build APK (Debug)
       run: ./gradlew assembleDebug
