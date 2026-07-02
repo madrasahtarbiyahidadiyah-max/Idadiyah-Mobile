@@ -23,7 +23,9 @@ jobs:
 
     - name: 🐘 Setup Gradle (Official & Caching)
       uses: gradle/actions/setup-gradle@v3
-      # Action ini akan otomatis mengurus performa, cache, dan mencegah banyak error bawaan Gradle
+
+    - name: 🔑 Berikan izin eksekusi untuk gradlew
+      run: chmod +x gradlew
 
     - name: 🚀 Build APK (Debug)
       run: ./gradlew assembleDebug
