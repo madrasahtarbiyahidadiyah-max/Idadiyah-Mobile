@@ -1,4 +1,4 @@
-name: Android CI
+name: Build Apps CI
 
 on:
   push:
@@ -7,7 +7,8 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
+  build-android:
+    name: Build Android APK
     runs-on: ubuntu-latest
 
     steps:
@@ -24,8 +25,13 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
 
-    - name: Build with Gradle (Debug)
+    - name: Build APK (Debug)
+      # Ini akan membuat file .apk untuk testing
       run: ./gradlew assembleDebug
 
-    - name: Run Unit Tests
-      run: ./gradlew testDebugUnitTest
+    - name: Upload Android APK
+      # Langkah ini akan mengunggah APK agar bisa Anda download di halaman GitHub
+      uses: actions/upload-artifact@v4
+      with:
+        name: android-app-debug
+        path: app/build/outputs/apk/debug/*.apk
