@@ -21,10 +21,14 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
 
-    - name: 🐘 Setup Gradle (Official & Caching)
+    - name: 🐘 Setup Gradle
       uses: gradle/actions/setup-gradle@v3
 
-    - name: 🔑 Berikan izin eksekusi untuk gradlew
+    - name: 🛠️ Perbaiki Gradle Wrapper Otomatis
+      # Trik Ampuh: Ini akan menimpa/membuat ulang file .jar yang rusak dengan yang baru & sehat langsung di server!
+      run: gradle wrapper
+
+    - name: 🔑 Berikan izin eksekusi
       run: chmod +x gradlew
 
     - name: 🚀 Build APK (Debug)
