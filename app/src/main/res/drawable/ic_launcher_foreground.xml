@@ -1,28 +1,8 @@
-<vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:width="108dp"
-    android:height="108dp"
-    android:viewportWidth="108"
-    android:viewportHeight="108">
-    <!-- Beautiful Outer Gold Circle Emblem -->
-    <path
-        android:strokeColor="#FBBF24"
-        android:strokeWidth="2.5"
-        android:fillColor="#00000000"
-        android:pathData="M54,20 C72.78,20 88,35.22 88,54 C88,72.78 72.78,88 54,88 C35.22,88 20,72.78 20,54 C20,35.22 35.22,20 54,20 Z" />
-
-    <!-- Book/Clipboard rows -->
-    <path
-        android:fillColor="#FBBF24"
-        android:pathData="M38,40 h32 v3.5 h-32 z" />
-    <path
-        android:fillColor="#FBBF24"
-        android:pathData="M38,48 h32 v3.5 h-32 z" />
-    <path
-        android:fillColor="#FBBF24"
-        android:pathData="M38,56 h20 v3.5 h-20 z" />
-
-    <!-- Clean verification checkmark -->
-    <path
-        android:fillColor="#FBBF24"
-        android:pathData="M64,56 l1.5,1.5 l5,-5 l1,1 l-6,6 l-2.5,-2.5 Z" />
-</vector>
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:width="82dp"
+        android:height="82dp"
+        android:drawable="@drawable/logo_idadiyahapps"
+        android:gravity="center" />
+</layer-list>

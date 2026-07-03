@@ -39,6 +39,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalClipboardManager
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -49,6 +50,7 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.rememberAsyncImagePainter
+import com.example.R
 import com.example.*
 import com.example.ui.theme.*
 import com.google.mlkit.vision.barcode.common.Barcode
@@ -252,18 +254,24 @@ fun HeaderControlsRow(
             )
         }
 
+        val isDarkTheme = when (themeMode) {
+            "dark" -> true
+            "light" -> false
+            else -> androidx.compose.foundation.isSystemInDarkTheme()
+        }
+
         Row(
-            horizontalArrangement = Arrangement.spacedBy(8.dp),
+            modifier = Modifier
+                .clip(CircleShape)
+                .background(MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.35f))
+                .padding(horizontal = 4.dp, vertical = 2.dp),
+            horizontalArrangement = Arrangement.spacedBy(4.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
             // Connection Status / Quick Sync Button
             IconButton(
                 onClick = onSyncClick,
-                modifier = Modifier
-                    .size(36.dp)
-                    .clip(RoundedCornerShape(10.dp))
-                    .background(MaterialTheme.colorScheme.surface)
-                    .border(1.dp, Color.LightGray.copy(alpha = 0.5f), RoundedCornerShape(10.dp))
+                modifier = Modifier.size(34.dp)
             ) {
                 Icon(
                     imageVector = Icons.Default.Refresh,
@@ -274,41 +282,28 @@ fun HeaderControlsRow(
             }
 
             // Dark/Light Mode toggle button next to Sync and Settings
-            val isDarkTheme = when (themeMode) {
-                "dark" -> true
-                "light" -> false
-                else -> androidx.compose.foundation.isSystemInDarkTheme()
-            }
             IconButton(
                 onClick = onThemeToggle,
-                modifier = Modifier
-                    .size(36.dp)
-                    .clip(RoundedCornerShape(10.dp))
-                    .background(MaterialTheme.colorScheme.surface)
-                    .border(1.dp, Color.LightGray.copy(alpha = 0.5f), RoundedCornerShape(10.dp))
+                modifier = Modifier.size(34.dp)
             ) {
                 Icon(
                     imageVector = if (isDarkTheme) Icons.Default.WbSunny else Icons.Default.NightsStay,
                     contentDescription = "Toggle Theme",
                     tint = if (isDarkTheme) Color(0xFFFFB74D) else Color(0xFF5C6BC0),
-                    modifier = Modifier.size(20.dp)
+                    modifier = Modifier.size(18.dp)
                 )
             }
 
             // Settings button
             IconButton(
                 onClick = onSettingsClick,
-                modifier = Modifier
-                    .size(36.dp)
-                    .clip(RoundedCornerShape(10.dp))
-                    .background(MaterialTheme.colorScheme.surface)
-                    .border(1.dp, Color.LightGray.copy(alpha = 0.5f), RoundedCornerShape(10.dp))
+                modifier = Modifier.size(34.dp)
             ) {
                 Icon(
                     imageVector = Icons.Outlined.Settings,
                     contentDescription = "Settings",
-                    tint = MaterialTheme.colorScheme.onSurface,
-                    modifier = Modifier.size(20.dp)
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.size(18.dp)
                 )
             }
         }
@@ -1369,9 +1364,10 @@ fun TabStatistikScreen(viewModel: AppViewModel) {
                 ) {
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Icon(
-                            imageVector = Icons.Default.Share,
+                            painter = painterResource(id = R.drawable.ic_whatsapp_white),
                             contentDescription = "WA",
-                            tint = Color.White
+                            tint = Color.White,
+                            modifier = Modifier.size(20.dp)
                         )
                         Spacer(modifier = Modifier.width(8.dp))
                         Text(
@@ -2092,9 +2088,10 @@ fun FloatingWABar(
                 .background(Color(0xFF25D366))
         ) {
             Icon(
-                imageVector = Icons.Default.Share,
+                painter = painterResource(id = R.drawable.ic_whatsapp_white),
                 contentDescription = "WhatsApp",
-                tint = Color.White
+                tint = Color.White,
+                modifier = Modifier.size(22.dp)
             )
         }
     }
