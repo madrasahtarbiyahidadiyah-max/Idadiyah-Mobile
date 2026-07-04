@@ -342,9 +342,7 @@ fun FalakClockBanner(viewModel: AppViewModel) {
                 modifier = Modifier.weight(1.05f)
             ) {
                 Image(
-                    painter = rememberAsyncImagePainter(
-                        model = "https://i.postimg.cc/hvDj9Q4m/MMU-IDADIYAH.png"
-                    ),
+                    painter = painterResource(id = R.drawable.logo_mmu_idadiyah),
                     contentDescription = "Logo",
                     modifier = Modifier
                         .size(125.dp),
