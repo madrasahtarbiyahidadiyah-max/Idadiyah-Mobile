@@ -1,5 +1,5 @@
 {
-  "name": "Loker & Inspeksi KBM",
+  "name": "Idadiyah Apps",
   "description": "Aplikasi Sistem Terpadu Pengawasan KBM & Loker MMU Tarbiyah Idadiyah PP. Sidogiri",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
